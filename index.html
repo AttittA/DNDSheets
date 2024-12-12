@@ -1,0 +1,29 @@
+<!-- public/login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+        <form id="loginForm" action="homepage.html" method="POST">
+            <h1>LOGIN</h1>
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username" required>
+                <box-icon name='user'></box-icon>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password" required>
+                <box-icon name='lock-alt'></box-icon>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+    <script src="server.js"></script>
+</body>
+</html>

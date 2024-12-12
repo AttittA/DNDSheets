@@ -1,0 +1,46 @@
+<!-- public/confirm-deletion.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Deletion</title>
+    <link rel="stylesheet" href="dashboardstyle.css">
+</head>
+<body>
+    <h2>Are you sure you want to delete this character?</h2>
+    <div id="character-details">
+        <!-- Details of the character to be deleted -->
+        <h3>Character Name: [Character Name]</h3>
+        <p>Class: [Class]</p>
+        <p>Race: [Race]</p>
+        <p>Background: [Background]</p>
+        <p>Inventory: [Inventory]</p>
+    </div>
+    <button id="confirm-delete">Yes, Delete</button>
+    <button id="cancel-delete">No, Cancel</button>
+    <script src="index.html"></script>
+    <script>
+        document.getElementById('confirm-delete').addEventListener('click', () => {
+            // Send a request to delete the character (assumed to be linked with /delete-character/:id route)
+            const characterId = 1; // Replace with the actual character ID to delete
+            fetch(`/delete-character/${characterId}`, {
+                method: 'POST'
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = 'Dashboard.html'; // Redirect back to character sheets
+                } else {
+                    alert('Error deleting character');
+                }
+            })
+            .catch(error => console.error('Error deleting character:', error));
+        });
+
+        document.getElementById('cancel-delete').addEventListener('click', () => {
+            window.location.href = 'Dashboard.html'; // Redirect back to character sheets
+        });
+    </script>
+</body>
+</html>

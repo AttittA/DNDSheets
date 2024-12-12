@@ -1,0 +1,39 @@
+<!-- public/dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Fetch characters data from the server
+            fetch('http://localhost:8888/dashboard')
+                .then(response => response.json())
+                .then(data => {
+                    const characterList = document.getElementById('characters-list');
+                    data.forEach(character => {
+                        const characterElement = document.createElement('div');
+                        characterElement.classList.add('character');
+                        characterElement.innerHTML = `
+                            <h3>${character.name}</h3>
+                            <p>Class: ${character.class}</p>
+                            <p>Race: ${character.race}</p>
+                            <p>Background: ${character.background}</p>
+                            <p>Inventory: ${character.inventory}</p>
+                        `;
+                        characterList.appendChild(characterElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching characters:', error));
+        });
+    </script>
+</head>
+<body>
+    <h2>Character Dashboard</h2>
+    <div id="characters-list">
+        <!-- Character details will be dynamically added here -->
+    </div>
+</body>
+</html>
